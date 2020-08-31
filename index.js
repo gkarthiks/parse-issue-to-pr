@@ -8,6 +8,8 @@ try {
   console.log(`The starting parsing symbol declared======> ${startingParseSymbol}!`);
 
   console.log(`the event payload is =====>>>>>. ${eventPayload}`);
+  
+  console.log(`the event payload is =====>>>>>. ${eventPayload.issue}`);
 
 } catch (error) {
   core.setFailed(error.message);
