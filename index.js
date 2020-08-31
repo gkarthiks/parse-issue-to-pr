@@ -24,19 +24,23 @@ Date.prototype.mmddyyyy = function() {
 
 try {
     
-    var startingParseSymbol = core.getInput("starting-parse-symbol");
+    var startingParseSymbol = core.getInput("starting-parse-symbol").trim();
     var issueContext = github.context.payload.issue.body;
-    var issueName = github.context.payload.issue.title;
-    var fileNameFormat = core.getInput("file-name-format");
-    var pathToSave = core.getInput("path-to-save");
-    var fileNameExtension = core.getInput("file-name-extension");
+    var fileNameFormat = core.getInput("file-name-format").trim();
+    var pathToSave = core.getInput("path-to-save").trim();
+    var fileNameExtension = core.getInput("file-name-extension").trim();
     var fileNameDate, completeFileName;
+
+    var issueTitle = github.context.payload.issue.title;
+    var issueTitle30Chars = issueTitle.substring(0,30);
+    var sanitizedIssueTitle = issueTitle30Chars.replace(/[^a-zA-Z0-9]/g,'_').trim();
 
     console.log(`
     The symbol declared for parsing is ${startingParseSymbol}
     The file name format is specified as ${fileNameFormat}
     The file name extension is specified as ${fileNameExtension}
     The path to save the file is specified as ${pathToSave}
+    Sanitized issue title is ${sanitizedIssueTitle}
     `);
 
     console.log(`The tweet content is ${issueContext.substring(issueContext.indexOf(startingParseSymbol) + startingParseSymbol.length, issueContext.lastIndexOf(startingParseSymbol))}`);
@@ -52,7 +56,7 @@ try {
             console.log(date.mmddyyyy());
             fileNameDate = date.mmddyyyy();
         }
-        completeFileName = fileNameDate+issueName+"."+fileNameExtension
+        completeFileName = fileNameDate+sanitizedIssueTitle+"."+fileNameExtension
 
         console.log(`file name tio be saved is ${completeFileName}`)
     }
