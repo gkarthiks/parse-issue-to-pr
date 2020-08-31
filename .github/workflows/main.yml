@@ -15,3 +15,4 @@ jobs:
         id: hello
         with:
           starting-parse-symbol: '<!--::-->'
+          file-name-extension: 'haitweets'
