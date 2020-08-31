@@ -8,10 +8,12 @@ assignees: ''
 ---
 
 **Provide the actual tweet content below**
-<!-- Do not delete the '##??##' character below -->
-##??##
+<!-- Input your tweet content exactly below the commented colons -->
+<!--::-->
 
-
-##??##
+<!--::-->
 
 **Provide a human friendly time for the tweet to go out**
+<!-- in dd-MM-yyyy format -->
+
+>Time: 
