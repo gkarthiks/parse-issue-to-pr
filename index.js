@@ -33,7 +33,12 @@ try {
 
     var issueTitle = github.context.payload.issue.title;
     var issueTitle30Chars = issueTitle.substring(0,30);
-    var sanitizedIssueTitle = issueTitle30Chars.replace(/[^a-zA-Z0-9]/g,'_').trim();
+    var sanitizedIssueTitle = issueTitle30Chars.replace(/[^a-zA-Z0-9]/g,'-').trim();
+
+
+    if (!fs.existsSync(pathToSave)){
+        fs.mkdirSync(pathToSave, { recursive: true });
+      }
 
     console.log(`
     The symbol declared for parsing is ${startingParseSymbol}
@@ -42,8 +47,8 @@ try {
     The path to save the file is specified as ${pathToSave}
     Sanitized issue title is ${sanitizedIssueTitle}
     `);
-
-    console.log(`The tweet content is ${issueContext.substring(issueContext.indexOf(startingParseSymbol) + startingParseSymbol.length, issueContext.lastIndexOf(startingParseSymbol))}`);
+    var tweetContent = issueContext.substring(issueContext.indexOf(startingParseSymbol) + startingParseSymbol.length, issueContext.lastIndexOf(startingParseSymbol));
+    console.log(`The tweet content is ${tweetContent}`);
 
     var scheduledTime = issueContext.substring(issueContext.indexOf("Time:")+5, issueContext.length).trim()
     if (scheduledTime === "") {
@@ -60,6 +65,13 @@ try {
 
         console.log(`file name tio be saved is ${completeFileName}`)
     }
+
+    const dataFilePath = pathToSave + '/completeFileName';
+
+    fs.writeFile(dataFilePath, tweetContent, (err) => {
+        if (err) throw err;
+      });
+
     
 } catch (error) {
     core.setFailed(error.message);
