@@ -1,13 +1,10 @@
 name: 'Parse Issue to PR'
 description: 'Parses the isssue and creates a PR'
 inputs:
-  starting-parse-symbol:  #parsing symbol
+  starting-parse-symbol:
     description: 'The parsing symbol that specifies the start of the parsing characters.'
     required: true
     default: '##??##'
-outputs:
-  content: # id of output
-    description: 'Parsed content'
 runs:
   using: 'node12'
   main: 'index.js'

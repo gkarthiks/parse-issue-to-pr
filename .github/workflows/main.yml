@@ -1,7 +1,7 @@
 name: CI
 on:
   issues:
-    type: [opened]
+    type: ['opened']
 
 jobs:
   hello_world_job:
@@ -10,10 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+      - name: parsing from body of the issue
+        uses: ./
         id: hello
         with:
-          starting-parse-symbol: 'Mona the Octocat'
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          starting-parse-symbol: '##??##'
