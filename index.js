@@ -9,7 +9,7 @@ try {
 
   console.log(`the event payload is =====>>>>>. ${eventPayload}`);
   
-  console.log(`the event payload is =====>>>>>. ${github.context.payload.issue}`);
+  console.log(`the event payload is =====>>>>>. ${github.context.payload.issue.html_url}`);
 
 } catch (error) {
   core.setFailed(error.message);
