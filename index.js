@@ -11,6 +11,8 @@ try {
   
   console.log(`the issue context is  =====>>>>>. ${issueContext}`);
 
+  console.log(` the substring is ===> ${str.substring(str.indexOf(startingParseSymbol) + length(startingParseSymbol), str.lastIndexOf(startingParseSymbol))}`);
+
 } catch (error) {
   core.setFailed(error.message);
 }

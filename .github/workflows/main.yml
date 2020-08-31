@@ -14,4 +14,4 @@ jobs:
         uses: ./
         id: hello
         with:
-          starting-parse-symbol: '##??##'
+          starting-parse-symbol: '<!--::-->'
