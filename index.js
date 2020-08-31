@@ -29,7 +29,7 @@ try {
 
     console.log(`The tweet content is ${issueContext.substring(issueContext.indexOf(startingParseSymbol) + startingParseSymbol.length, issueContext.lastIndexOf(startingParseSymbol))}`);
 
-    var scheduledTime = time.substring(issueContext.indexOf("Time:")+5, issueContext.length).trim()
+    var scheduledTime = issueContext.substring(issueContext.indexOf("Time:")+5, issueContext.length).trim()
     if (scheduledTime === "") {
         console.log("Scheduled time is null, creating the file name with the specified format.")
         var date = new Date();
