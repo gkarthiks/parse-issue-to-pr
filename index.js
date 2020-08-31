@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-
+const fs = require('fs');
 
 Date.prototype.ddmmyyyy = function() {
     var mm = this.getMonth() + 1;
