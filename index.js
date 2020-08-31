@@ -66,7 +66,7 @@ try {
         console.log(`file name tio be saved is ${completeFileName}`)
     }
 
-    const dataFilePath = pathToSave + '/completeFileName';
+    const dataFilePath = pathToSave+'/'+completeFileName;
 
     fs.writeFile(dataFilePath, tweetContent, (err) => {
         if (err) throw err;
