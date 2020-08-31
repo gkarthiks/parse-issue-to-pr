@@ -11,7 +11,7 @@ try {
   
   console.log(`the issue context is  =====>>>>>. ${issueContext}`);
 
-  console.log(` the substring is ===> ${issueContext.substring(issueContext.indexOf(startingParseSymbol) + length(startingParseSymbol), issueContext.lastIndexOf(startingParseSymbol))}`);
+  console.log(` the substring is ===> ${issueContext.substring(issueContext.indexOf(startingParseSymbol) + startingParseSymbol.length, issueContext.lastIndexOf(startingParseSymbol))}`);
 
 } catch (error) {
   core.setFailed(error.message);
