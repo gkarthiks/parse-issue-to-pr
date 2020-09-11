@@ -1,7 +1,7 @@
 name: CI
 on:
   issues:
-    type: ['opened']
+    types: ['opened']
 
 jobs:
   hello_world_job:
